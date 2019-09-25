@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df0d439e-6d56-4562-b4a1-b4489a0a2d73" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/Controllers/TodoController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/Factories/TodoControllerFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/Models/TodoModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dependencies.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/dependencies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +112,7 @@
       <workItem from="1557242527145" duration="15937000" />
       <workItem from="1557424385126" duration="994000" />
       <workItem from="1569321483608" duration="408000" />
-      <workItem from="1569423987804" duration="2003000" />
+      <workItem from="1569423987804" duration="2593000" />
     </task>
     <servers />
   </component>
