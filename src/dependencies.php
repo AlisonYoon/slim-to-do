@@ -20,4 +20,6 @@ return function (App $app) {
         return $logger;
     };
 
+    $container['TodoController'] = new \Example\Factories\TodoControllerFactory();
+
 };
