@@ -9,5 +9,6 @@ return function (App $app) {
 
     $app->get('/', 'TodoController');
     $app->post('/addItem', 'AddItemController');
-    $app->post('/moveItem', 'MoveItenController');
+    $app->post('/moveItem', 'MoveItemController');
+
 };

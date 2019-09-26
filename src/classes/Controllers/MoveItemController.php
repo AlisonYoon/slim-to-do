@@ -4,6 +4,7 @@
 namespace Example\Controllers;
 
 
+use Example\Models\TodoModel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
@@ -16,7 +17,7 @@ class MoveItemController
      * MoveItemController constructor.
      * @param $todoModel
      */
-    public function __construct(PhpRenderer $renderer, $todoModel)
+    public function __construct(PhpRenderer $renderer, TodoModel $todoModel)
     {
         $this->renderer = $renderer;
         $this->todoModel = $todoModel;
@@ -26,8 +27,10 @@ class MoveItemController
     {
         $postMove = $request->getParsedBody();
         $this->todoModel->moveTodoItems($postMove);
+//        $this->renderer->render($response, 'index.phtml', ['doneItems' => $this->todoModel->moveTodoItems()]);
 
-        $this->renderer->render($response, 'index.phtml', ['doneItems' => $this->todoModel->moveTodoItems()]);
+        return $response->withJson(['success' => true]);
+
     }
 
 }

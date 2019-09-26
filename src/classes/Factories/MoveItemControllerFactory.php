@@ -5,14 +5,17 @@ namespace Example\Factories;
 
 
 use Example\Controllers\MoveItemController;
+use Psr\Container\ContainerInterface;
+
 
 class MoveItemControllerFactory
 {
-    public function __invoke($container)
+    public function __invoke(ContainerInterface $container)
     {
-        $db = $container->grt('TodoModel');
-        $moveItem = new MoveItemController($db);
-        return $moveItem;
+        $renderer = $container->get('renderer');
+        $db = $container->get('TodoModel');
+        $MoveItemController = new MoveItemController($renderer, $db);
+        return $MoveItemController;
     }
 
 }
