@@ -26,13 +26,50 @@
         </style>
     </head>
     <body>
-        <h1>Slim</h1>
-        <div>a microframework for PHP</div>
 
-        <?php if (isset($name)) : ?>
-            <h2>Hello <?= htmlspecialchars($name); ?>!</h2>
+    <form action="/" method="get">
+        <label for="userName">What is your name?</label>
+        <input type="text" placeholder="name" id="userName">
+        <input type="submit" id="nameSubmit">
+    </form>
+        <?php if(isset($name)) : ?>
+        <h1><?= htmlspecialchars($name); ?>'s to do list</h1>
         <?php else: ?>
-            <p>Try <a href="http://www.slimframework.com">SlimFramework</a></p>
+        <h1>to do list</h1>
         <?php endif; ?>
+
+<!--        --><?php //if (isset($name)) : ?>
+<!--            <h2>Hello --><?//= htmlspecialchars($name); ?><!--!</h2>-->
+<!--        --><?php //else: ?>
+<!--            <p>Try <a href="http://www.slimframework.com">SlimFramework</a></p>-->
+<!--        --><?php //endif; ?>
+
+        <form action="/" method="post">
+            <label for="addTodo">Add a to-do item</label>
+            <input type="text" id="addTodo" name="addTodo">
+            <input type="submit" id="todoSubmit">
+        </form>
+
+        <div id="displayTodo">
+            <h2>To do items</h2>
+            <?php if(isset($item)) : ?>
+                <li><?= htmlspecialchars($item); ?></li>
+            <?php else: ?>
+                <p></p>
+            <?php endif; ?>
+
+        </div>
+        <div id="doneTodo">
+            <h2>Done items</h2>
+        </div>
+
+    <script>
+        // document.querySelector("#nameSubmit").addEventListener("click", function(event) {
+        //     event.preventDefault();
+        // }, false);
+        // document.querySelector("#todoSubmit").addEventListener("click", function(event) {
+        //     event.preventDefault();
+        // }, false);
+    </script>
     </body>
 </html>

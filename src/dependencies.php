@@ -20,6 +20,15 @@ return function (App $app) {
         return $logger;
     };
 
+    // PDO
+    $container['db'] = function($container) {
+        $dbConfig = $container->get('settings')['db'];
+        $db = new PDO('mysql:host=' . $dbConfig['host'] . ';dbname=' . $dbConfig['dbname'] , $dbConfig['username'] , $dbConfig['password']);
+        return $db;
+    };
+
     $container['TodoController'] = new \Example\Factories\TodoControllerFactory();
+
+    $container['todoModel'] = new \Example\Factories\TodoModelFactory();
 
 };

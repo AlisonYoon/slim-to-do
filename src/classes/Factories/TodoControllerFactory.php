@@ -12,7 +12,8 @@ class TodoControllerFactory
     public function __invoke(ContainerInterface $container)
     {
         $renderer = $container->get('renderer');
-        $TodoController = new TodoController($renderer);
+        $todoModel = $container->get('todoModel');
+        $TodoController = new TodoController($renderer, $todoModel);
         return $TodoController;
     }
 
