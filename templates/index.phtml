@@ -27,16 +27,12 @@
     </head>
     <body>
 
-    <form action="/" method="get">
+    <form action="/" method="get" id="userNameForm">
         <label for="userName">What is your name?</label>
-        <input type="text" placeholder="name" id="userName">
+        <input type="text" placeholder="name">
         <input type="submit" id="nameSubmit">
     </form>
-        <?php if(isset($name)) : ?>
-        <h1><?= htmlspecialchars($name); ?>'s to do list</h1>
-        <?php else: ?>
-        <h1>to do list</h1>
-        <?php endif; ?>
+    <h1 id="username"></h1><h1>To do list</h1>
 
 <!--        --><?php //if (isset($name)) : ?>
 <!--            <h2>Hello --><?//= htmlspecialchars($name); ?><!--!</h2>-->
@@ -52,8 +48,11 @@
 
         <div id="displayTodo">
             <h2>To do items</h2>
-            <?php if(isset($item)) : ?>
-                <li><?= htmlspecialchars($item); ?></li>
+            <?php if(isset($items)) :
+                foreach($items as $item) {
+                    echo '<li>' . $item["item"] . "<input type=\"checkbox\" value=\"1\" class=\"itemCheck\"></li><br>";
+                    }
+            ?>
             <?php else: ?>
                 <p></p>
             <?php endif; ?>
@@ -64,12 +63,24 @@
         </div>
 
     <script>
-        // document.querySelector("#nameSubmit").addEventListener("click", function(event) {
-        //     event.preventDefault();
-        // }, false);
-        // document.querySelector("#todoSubmit").addEventListener("click", function(event) {
-        //     event.preventDefault();
-        // }, false);
+        const nameField = document.getElementById("username");
+        const userNameForm = document.getElementById("userNameForm");
+        let itemCheckBtnList = document.querySelectorAll(".itemCheck");
+        (function(){
+            userNameForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+
+                let user = userNameForm.item.value;
+                nameField.innerText = user;
+                userNameForm.reset();
+            })
+
+            for(let i = 0; i < itemCheckBtnList.length; i ++) {
+                itemCheckBtnList[i].addEventListener("click", function(e) {
+                    this.value = 0;
+                })
+            }
+        })()
     </script>
     </body>
 </html>

@@ -26,15 +26,13 @@ class TodoController
 
     public function __invoke(Request $request, Response $response, $args)
     {
+        //send todo items to db
         $post = $request->getParsedBody();
-        var_dump($post);
-//        $get = $request->getParams();
-//        echo "<br>";
-//        var_dump($get);
         $this->todoModel->sendTodoItems($post);
 
-        $this->renderer->render($response, 'index.phtml', ['item' => $post["addTodo"]]);
-    }
+        //get todo items from the db
+        $this->renderer->render($response, 'index.phtml', ['items' => $this->todoModel->getTodoItems()]);
 
+    }
 
 }

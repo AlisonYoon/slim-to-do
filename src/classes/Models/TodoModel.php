@@ -23,9 +23,11 @@ class TodoModel
             \PDO::ATTR_DEFAULT_FETCH_MODE,
             \PDO::FETCH_ASSOC
         );
-        $sql = 'SELECT `item` FROM todo-item WHERE done = 1;';
-        $query = $this->db->query($sql);
-        return $query->fetchAll();
+        $sql = $this->db->prepare('SELECT `item` FROM `todo-item` WHERE done = 1;');
+//        $todoItem = $this->db->query($sql);
+//        return $todoItem->fetchAll();
+        $sql->execute();
+        return $sql->fetchAll();
     }
 
     public function sendTodoItems($post)
