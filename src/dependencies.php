@@ -28,7 +28,8 @@ return function (App $app) {
     };
 
     $container['TodoController'] = new \Example\Factories\TodoControllerFactory();
+    $container['AddItemController'] = new \Example\Factories\AddItemControllerFactory();
+    $container['MoveItemController'] = new \Example\Factories\MoveItemControllerFactory();
 
-    $container['todoModel'] = new \Example\Factories\TodoModelFactory();
-
+    $container['TodoModel'] = new \Example\Factories\TodoModelFactory();
 };

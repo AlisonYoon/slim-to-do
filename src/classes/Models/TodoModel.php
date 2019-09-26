@@ -23,7 +23,7 @@ class TodoModel
             \PDO::ATTR_DEFAULT_FETCH_MODE,
             \PDO::FETCH_ASSOC
         );
-        $sql = $this->db->prepare('SELECT `item` FROM `todo-item` WHERE done = 1;');
+        $sql = $this->db->prepare('SELECT `id`, `item` FROM `todo-item` WHERE done = 1;');
 //        $todoItem = $this->db->query($sql);
 //        return $todoItem->fetchAll();
         $sql->execute();
@@ -40,9 +40,12 @@ class TodoModel
 
     }
 
-    public function moveTodoItems()
+    public function moveTodoItems($postMove)
     {
-
+        $doneItemId = $postMove['moveTodo'];
+        $sql = $this->db->prepare('UPDATE `todo-item` SET done = 0 WHERE id=:id;');
+        $sql->bindParam('id', $doneItemId, \PDO::PARAM_INT);
+        $sql->execute();
     }
 
 }
