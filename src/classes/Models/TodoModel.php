@@ -48,4 +48,15 @@ class TodoModel
         $sql->execute();
     }
 
+    public function getDoneItems()
+    {
+        $this->db->setAttribute(
+            \PDO::ATTR_DEFAULT_FETCH_MODE,
+            \PDO::FETCH_ASSOC
+        );
+        $sql = $this->db->prepare('SELECT `id`, `item` FROM `todo-item` WHERE done = 0;');
+        $sql->execute();
+        return $sql->fetchAll();
+    }
+
 }

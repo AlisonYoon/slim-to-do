@@ -60,7 +60,16 @@
         </div>
         <div>
             <h2>Done items</h2>
-            <div id="doneItemList"></div>
+            <div>
+                <?php if(isset($doneItems)) :
+                    foreach($doneItems as $doneitem) {
+                        echo '<li>' . $doneitem["item"] . '</li><br>';
+                    }
+                    ?>
+                <?php else: ?>
+                    <p></p>
+                <?php endif; ?>
+            </div>
         </div>
 
     <script>
@@ -92,7 +101,6 @@
                         .then(response => response.json())
                         .then((taskId)=> {
                             // move item here
-                            doneItemField.innerHTML = "<li>" +  + "</li>"
                             console.log(taskId)
                         });
                 })

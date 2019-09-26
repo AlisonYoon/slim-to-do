@@ -10,5 +10,5 @@ return function (App $app) {
     $app->get('/', 'TodoController');
     $app->post('/addItem', 'AddItemController');
     $app->post('/moveItem', 'MoveItemController');
-
+    $app->get('/doneItem', 'DoneItemController');
 };
