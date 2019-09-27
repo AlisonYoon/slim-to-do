@@ -24,8 +24,6 @@ class TodoModel
             \PDO::FETCH_ASSOC
         );
         $sql = $this->db->prepare('SELECT `id`, `item` FROM `todo-item` WHERE done = 1;');
-//        $todoItem = $this->db->query($sql);
-//        return $todoItem->fetchAll();
         $sql->execute();
         return $sql->fetchAll();
     }

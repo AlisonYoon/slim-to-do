@@ -31,7 +31,7 @@ class TodoController
         $this->todoModel->sendTodoItems($post);
 
         //get todo items from the db
-        $this->renderer->render($response, 'index.phtml', ['items' => $this->todoModel->getTodoItems()]);
+        $this->renderer->render($response, 'index.phtml', ['items' => $this->todoModel->getTodoItems(),'doneItems' => $this->todoModel->getDoneItems()]);
 
     }
 

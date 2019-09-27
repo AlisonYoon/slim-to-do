@@ -48,7 +48,8 @@
 
         <div>
             <h2>To do items</h2>
-            <?php if(isset($items)) :
+            <?php
+            if(isset($items)) :
                 foreach($items as $item) {
                     echo '<li>' . $item["item"] . '<input type="checkbox" value="' . $item["id"] . '" class="itemCheck"></li><br>';
                     }
@@ -60,8 +61,9 @@
         </div>
         <div>
             <h2>Done items</h2>
-            <div>
-                <?php if(isset($doneItems)) :
+            <div id="doneItemList">
+                <?php
+                if(isset($doneItems)) :
                     foreach($doneItems as $doneitem) {
                         echo '<li>' . $doneitem["item"] . '</li><br>';
                     }
@@ -99,9 +101,9 @@
                         body: JSON.stringify({taskId : this.value})
                     })
                         .then(response => response.json())
-                        .then((taskId)=> {
-                            // move item here
-                            console.log(taskId)
+                        .then((obj)=> {
+                            // move item here.
+                            console.log(obj);
                         });
                 })
             }
