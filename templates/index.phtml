@@ -19,9 +19,21 @@
                 color: #719e40;
                 letter-spacing: -3px;
                 font-family: 'Lato', sans-serif;
-                font-size: 100px;
+                font-size: 42px;
                 font-weight: 200;
                 margin-bottom: 0;
+            }
+
+            .doneItem input {
+                display: none;
+            }
+
+            .none {
+                display: none;
+            }
+
+            .doneItem {
+                display: list-item;
             }
         </style>
     </head>
@@ -34,19 +46,13 @@
     </form>
     <h1 id="username"></h1><h1>To do list</h1>
 
-<!--        --><?php //if (isset($name)) : ?>
-<!--            <h2>Hello --><?//= htmlspecialchars($name); ?><!--!</h2>-->
-<!--        --><?php //else: ?>
-<!--            <p>Try <a href="http://www.slimframework.com">SlimFramework</a></p>-->
-<!--        --><?php //endif; ?>
-
         <form action="/addItem" method="post">
             <label for="addTodo">Add a to-do item</label>
             <input type="text" id="addTodo" name="addTodo">
             <input type="submit" id="todoSubmit">
         </form>
 
-        <div>
+        <div id="todoItem">
             <h2>To do items</h2>
             <?php
             if(isset($items)) :
@@ -79,16 +85,9 @@
         const userNameForm = document.getElementById("userNameForm");
         let itemCheckBtnList = document.querySelectorAll(".itemCheck");
         const doneItemField = document.getElementById("doneItemList");
+        const toDoItemField = document.getElementById("todoItem");
 
         (function(){
-            // userNameForm.addEventListener("submit", function(e) {
-            //     e.preventDefault();
-            //
-            //     let user = userNameForm.item.value;
-            //     nameField.innerText = user;
-            //     userNameForm.reset();
-            // })
-
             for(let i = 0; i < itemCheckBtnList.length; i ++) {
                 itemCheckBtnList[i].addEventListener("change", function(e) {
                     let url = '/moveItem'
@@ -103,6 +102,8 @@
                         .then(response => response.json())
                         .then((obj)=> {
                             // move item here.
+                            this.parentElement.classList.add('none');
+                            doneItemField.innerHTML +=  "<li class='doneItem'>" + this.parentElement.innerHTML + "</li>";
                             console.log(obj);
                         });
                 })
@@ -110,25 +111,6 @@
 
 
         })()
-        // async function moveItem(){
-        //     for(let i = 0; i < itemCheckBtnList.length; i ++) {
-        //         itemCheckBtnList[i].addEventListener("change", function(e) {
-        //             let url = '/moveItem'
-        //
-        //             fetch(url, {
-        //                 method: 'POST',
-        //                 headers: {
-        //                     'Content-Type': 'application/json'
-        //                 },
-        //                 body: JSON.stringify({taskId : this.value})
-        //             })
-        //                 // .then(response => response.json())
-        //                 // .then((obj) => console.log(obj))
-        //         })
-        //     }
-        //     return await response.json()
-        //                 .then((obj) => console.log(obj))
-        // }
     </script>
     </body>
 </html>
